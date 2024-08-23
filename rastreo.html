@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rastreo de Pedidos - Atico Vintage</title>
+    <link rel="stylesheet" href="rastreoStile.css"> <!-- Vincula tu archivo CSS aquí -->
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a href="index.html">
+                <h1>Atico Vintage</h1>
+            </a>
+        </div>
+    </header>
+
+    <main>
+        <section class="rastreo-pedidos">
+            <h2>Rastreo de Pedidos</h2>
+            <p>Ingresa el número de seguimiento para rastrear tu pedido:</p>
+            <form id="rastreo-form">
+                <label for="tracking-number">Número de Seguimiento:</label>
+                <input type="text" id="tracking-number" name="tracking-number" required>
+                <button type="button" onclick="rastrearPedido()">Rastrear</button>
+            </form>
+
+            <div id="estado-pedido">
+                <!-- Aquí se mostrará el estado del pedido después de rastrear -->
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Atico Vintage. Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        function rastrearPedido() {
+            const trackingNumber = document.getElementById('tracking-number').value;
+            const estadoPedidoDiv = document.getElementById('estado-pedido');
+
+            // Simulación de un estado basado en el número de seguimiento
+            let estado = '';
+            if (trackingNumber === '123456') {
+                estado = 'Estado: En tránsito. Su pedido está en camino y llegará pronto.';
+            } else if (trackingNumber === '654321') {
+                estado = 'Estado: Entregado. Su pedido ha sido entregado.';
+            } else {
+                estado = 'Estado: Número de seguimiento no encontrado. Por favor, verifique y vuelva a intentarlo.';
+            }
+
+            // Mostrar el estado del pedido en la página
+            estadoPedidoDiv.innerHTML = `<p>${estado}</p>`;
+        }
+    </script>
+</body>
+</html>
