@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat de Soporte Técnico</title>
+    <link rel="stylesheet" href="chat.css">
+</head>
+<body>
+    <!-- Menú de Navegación -->
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="registro.html">Registro</a></li>
+                <li><a href="login.html">Login</a></li>
+                <li><a href="miscompras.html">Mis Compras</a></li>
+                <li><a href="carrito.html">Carrito</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="chat-container">
+        <h2>Chat de Soporte Técnico</h2>
+        <div class="chat-box" id="chat-box">
+            <div class="message">
+                <span class="user">Soporte:</span> Hola, ¿en qué puedo ayudarte hoy?
+            </div>
+        </div>
+        <form id="chat-form" onsubmit="sendMessage(event)">
+            <input type="text" id="user-message" placeholder="Escribe tu mensaje..." required>
+            <button type="submit">Enviar</button>
+        </form>
+    </div>
+
+    <script>
+        function sendMessage(event) {
+            event.preventDefault();
+            const message = document.getElementById('user-message').value;
+            const chatBox = document.getElementById('chat-box');
+            
+            // Añadir el mensaje del usuario al chat
+            const userMessageDiv = document.createElement('div');
+            userMessageDiv.className = 'message user-message';
+            userMessageDiv.innerHTML = `<span class="user">Tú:</span> ${message}`;
+            chatBox.appendChild(userMessageDiv);
+            
+            // Limpiar el campo de entrada
+            document.getElementById('user-message').value = '';
+            
+            // Simular una respuesta del soporte (esto es solo un ejemplo)
+            setTimeout(() => {
+                const supportMessageDiv = document.createElement('div');
+                supportMessageDiv.className = 'message';
+                supportMessageDiv.innerHTML = `<span class="user">Soporte:</span> Estamos procesando tu solicitud.`;
+                chatBox.appendChild(supportMessageDiv);
+                chatBox.scrollTop = chatBox.scrollHeight;
+            }, 1000);
+            
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }
+    </script>
+</body>
+</html>
